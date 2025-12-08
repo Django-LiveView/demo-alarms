@@ -1,0 +1,25 @@
+<div class="modal is-active">
+    <div class="modal-background" data-liveview-function="close_modal" data-action="click->page#run"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Alert Details</p>
+            <button class="delete" aria-label="close" data-liveview-function="close_modal" data-action="click->page#run"></button>
+        </header>
+        <section class="modal-card-body">
+            <div class="content">
+                <p><strong>ID:</strong> {{ alert.id }}</p>
+                <p>
+                    <strong>Type:</strong>
+                    <span class="tag {% if alert.type == 'INFO' %}is-info{% elif alert.type == 'WARNING' %}is-warning{% else %}is-danger{% endif %}">
+                        {{ alert.type }}
+                    </span>
+                </p>
+                <p><strong>Description:</strong> {{ alert.description|default:"No description" }}</p>
+                <p><strong>Created At:</strong> {{ alert.created_at|date:"Y-m-d H:i:s" }}</p>
+            </div>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button" data-liveview-function="close_modal" data-action="click->page#run">Close</button>
+        </footer>
+    </div>
+</div>

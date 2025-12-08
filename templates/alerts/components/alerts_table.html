@@ -1,0 +1,35 @@
+<table class="table is-fullwidth is-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for alert in alerts %}
+        <tr>
+            <td>{{ alert.id }}</td>
+            <td>
+                <span class="tag {% if alert.type == 'INFO' %}is-info{% elif alert.type == 'WARNING' %}is-warning{% else %}is-danger{% endif %}">
+                    {{ alert.type }}
+                </span>
+            </td>
+            <td>{{ alert.description|truncatewords:10 }}</td>
+            <td>
+                <button class="button is-small is-info" data-liveview-function="show_alert_details" data-action="click->page#run" data-data-alert-id="{{ alert.id }}">
+                    Details
+                </button>
+                <button class="button is-small is-danger ml-1" data-liveview-function="delete_alert" data-action="click->page#run" data-data-alert-id="{{ alert.id }}">
+                    Delete
+                </button>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" class="has-text-centered">No alerts yet</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

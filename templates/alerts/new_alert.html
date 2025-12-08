@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h1 class="title">New Alert</h1>
+        <h2 class="subtitle">Create a new alert</h2>
+
+        <div class="box">
+            <form data-liveview-function="submit_new_alert" data-action="submit->page#run">
+                <div class="field">
+                    <label class="label">Alert Type</label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            {{ form.type }}
+                        </div>
+                    </div>
+                    {% if form.type.errors %}
+                        {% for error in form.type.errors %}
+                            <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="field">
+                    <label class="label">Description</label>
+                    <div class="control">
+                        {{ form.description }}
+                    </div>
+                    {% if form.description.errors %}
+                        {% for error in form.description.errors %}
+                            <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button type="submit" class="button is-primary">Create Alert</button>
+                    </div>
+                    <div class="control">
+                        <button type="button" class="button is-light" data-liveview-function="go_home" data-action="click->page#run">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

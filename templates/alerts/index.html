@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h1 class="title">Alert System</h1>
+        <h2 class="subtitle">Real-time alerts with Django LiveView</h2>
+
+        <div class="table-container">
+            <div id="alerts-table-content">
+                {% include 'alerts/components/alerts_table.html' %}
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <button class="button is-primary" data-liveview-function="create_random_alert" data-action="click->page#run">
+                Add Random Alert
+            </button>
+            <button class="button is-link ml-2" data-liveview-function="show_new_alert_form" data-action="click->page#run">
+                New Alert Form
+            </button>
+        </div>
+    </div>
+</section>
+{% endblock %}

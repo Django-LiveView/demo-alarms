@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html data-room="{% if request.user.is_authenticated %}{{ request.user.id %}{% else %}anonymous{% endif %}" data-theme="light" data-controller="page">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home - Alert System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <script src="{% static 'liveview/liveview.min.js' %}" defer></script>
+</head>
+<body class="has-background-white">
+    <div id="notifications" class="notifications-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000; width: 300px;"></div>
+    <div id="modal-container"></div>
+    {% block content %}{% endblock %}
+</body>
+</html>
