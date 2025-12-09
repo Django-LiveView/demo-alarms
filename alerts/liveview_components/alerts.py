@@ -185,20 +185,8 @@ def show_new_alert_form(consumer, content):
                 "alerts/new_alert.html",
                 {"form": AlertForm()},
             ),
-        },
-    )
-    send(
-        consumer,
-        {
-            "target": "title",
-            "html": "New Alert - Alert System",
-        },
-    )
-    # Change URL using history API
-    send(
-        consumer,
-        {
-            "script": "window.history.pushState({}, '', '/new');",
+            "url": "/new",
+            "title": "New Alert - Alert System",
         },
     )
 
@@ -221,20 +209,8 @@ def submit_new_alert(consumer, content):
                     "alerts/index.html",
                     {"alerts": alerts},
                 ),
-            },
-        )
-        send(
-            consumer,
-            {
-                "target": "title",
-                "html": "Home - Alert System",
-            },
-        )
-        # Change URL using history API
-        send(
-            consumer,
-            {
-                "script": "window.history.pushState({}, '', '/');",
+                "url": "/",
+                "title": "Home - Alert System",
             },
         )
 
@@ -294,19 +270,7 @@ def go_home(consumer, content):
                 "alerts/index.html",
                 {"alerts": alerts},
             ),
-        },
-    )
-    send(
-        consumer,
-        {
-            "target": "title",
-            "html": "Home - Alert System",
-        },
-    )
-    # Change URL using history API
-    send(
-        consumer,
-        {
-            "script": "window.history.pushState({}, '', '/');",
+            "url": "/",
+            "title": "Home - Alert System",
         },
     )
