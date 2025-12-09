@@ -156,6 +156,8 @@ def show_alert_details(consumer, content):
                     "alerts/components/alert_modal.html",
                     {"alert": alert},
                 ),
+                "url": f"/alert/{alert_id}",
+                "title": f"Alert #{alert_id} - Alert System",
             },
         )
     except Alert.DoesNotExist:
@@ -170,6 +172,8 @@ def close_modal(consumer, content):
         {
             "target": "#modal-container",
             "html": "",
+            "url": "/",
+            "title": "Home - Alert System",
         },
     )
 
